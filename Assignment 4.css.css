@@ -1,0 +1,33 @@
+.heading{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: large;
+}
+table{
+    border-spacing: 0px;
+    border-collapse: collapse;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+td,th,tr{
+    border: 1px solid black;
+    height:5px;
+    width: 100px;
+}
+.center{
+    text-align: center;
+}
+.right{
+    text-align: right;
+}
+.wide{
+    width: 100px;
+}
+.green{
+    background-color: chartreuse;
+}
+.blue{
+    background-color: darkblue;
+}
