@@ -1,0 +1,75 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+}
+h1{
+    color:white;
+    text-align: center;
+    font-size: 2.5em;
+    font-family: 'Helvetica';
+}
+.container{
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:80vh;
+    overflow:hidden;
+    width: 90vw;
+    margin: auto;
+}
+.panel{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:100%;
+    margin:10px;
+    border-radius: 5px;
+    flex:0.2;
+    position: relative;
+    cursor: pointer;
+    transition: all 700ms ease-in;
+}
+.panel h3{
+    transition: opacity 0.3s ease-in 0.4s;
+    position:absolute;
+    bottom:20px;
+    font-size: 1.5em;
+    background-color: rgba(248,248,255,0.8);
+    color: black;
+    padding: 10px;
+    opacity: 0;
+}
+.panel.active{
+    flex:1;
+}
+.panel.active h3{
+    opacity: 1;
+}
+#panel-1{
+    background-image: url("https://images.unsplash.com/photo-1601128183284-8e4c7e51d65f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80");
+}
+#panel-2{
+    background-image: url("https://images.unsplash.com/photo-1624930266067-dc3aa6a7fd5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80");
+}
+#panel-3{
+    background-image: url("https://images.unsplash.com/photo-1536759078151-61c8b6f156a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80");
+}
+#panel-4{
+    background-image: url("https://images.unsplash.com/photo-1569437061238-3cf61084f487?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+}
+#panel-5{
+    background-image: url("https://images.unsplash.com/photo-1583212469088-40e7e939a72a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80");
+}
+
+
+@media (max-width: 480px) {
+    .container{
+        width:100vw;
+    }
+    #panel-4,#panel-5{
+        display: none;
+    }
+}
