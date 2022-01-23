@@ -1,0 +1,34 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20%;
+}
+
+.btn{
+    width: 10em;
+    height: 5em;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 15px;
+    font-family: "Helvetica";
+    cursor: pointer;
+    outline: none;
+}
+
+.btn:hover{
+    background-color: burlywood;
+    border: none;
+    color: white;
+}
