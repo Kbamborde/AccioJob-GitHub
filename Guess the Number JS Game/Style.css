@@ -44,6 +44,10 @@ button{
     margin-top: 50px;
     cursor: pointer;
 }
+#submit:active{
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+}
 
 #guessField{
     color: #000;
