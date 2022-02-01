@@ -1,0 +1,23 @@
+*{
+box-sizing: border-box;
+}
+
+body{
+    margin:0;
+    padding:0;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+}
+
+h1,h2,p{
+    padding: 0.5rem;
+}
+#shape{
+    width: 150px;
+    height: 150px;
+    display: block;
+    position: relative;
+    background-color: red;
+    border-radius: 50%;
+}
