@@ -2,6 +2,7 @@ const pScore = document.getElementById("playerScore");
 const cScore = document.getElementById("computerScore");
 const playerSelect = document.getElementById("playerSelect");
 const compSelect = document.getElementById("computerSelect");
+
 const message = document.getElementById("message");
 const submit = document.getElementById("submit");
 
@@ -12,18 +13,13 @@ const scissors = document.getElementById("scissors");
 let playerScore = 0;
 let computerScore = 0;
 let gameActive = false;
-
-submit.addEventListener("click", displayBoards);
-rock.addEventListener("click", () => gameFlow(rock.id));
-paper.addEventListener("click", () => gameFlow(paper.id));
-scissors.addEventListener("click", () => gameFlow(scissors.id));
-
 function displayBoards() {
     const start = document.getElementById("start");
     const boards = document.getElementById("boards");
     const select = document.getElementById("select");
 
     start.style.display = "none";
+
     boards.style.display = "block";
     select.style.display = "block";
 
@@ -32,59 +28,90 @@ function displayBoards() {
 
 function gameFlow(playerSelection) {
     const winnerObject = getMeWinner(playerSelection);
-    const result = winnerObject.winner
-    const { compMove } = winnerObject
 
+    const result = winnerObject.winner
+
+    const { compMove:computerMove } = winnerObject
     displaySelection('player', playerSelection, result);
-    displaySelection('computer', compMove, result);
+    displaySelection('computer', computerMove, result);
 
     scoreBoard(result);
     message.innerText = result;
     whoWon();
 }
 
-function displaySelection(whoIsPlaying, selection, result){
-    if(whoIsPlaying==='player'){
-        playerSelect.innerHTML = `<i class="fas fa-hand-${selection}></i>"`
+function displaySelection(whoIsPlaying, selection, result) {
+    if (whoIsPlaying === 'player') {
+        playerSelect.innerHTML = `<i class="fas fa-hand-${selection}"></i>`
 
-        if(result === "Player won!"){
+        if (result === "Player won!") {
             playerSelect.style.color = 'green';
             compSelect.style.color = 'red'
         }
     }
-    else{
-        compSelect.innerHTML = `<i class="fas fa-hand-${selection}></i>"`
+    else {
+        compSelect.innerHTML = `<i class="fas fa-hand-${selection}"></i>`
 
-        if(result === 'Computer won!'){
+        if (result === 'Computer won!') {
             playerSelect.style.color = 'red';
             compSelect.style.color = 'green';
         }
     }
 
-    if(result ==="Draw!"){
+    if (result === "Draw!") {
         compSelect.style.color = "yellow";
         playerSelect.style.color = "yellow"
     }
 }
 
-function scoreBoard(result){
-    if(result === "Player won!"){
+function scoreBoard(result) {
+    if (result === "Player won!") {
         playerScore++
         pScore.innerText = playerScore;
         cScore.innerText = computerScore;
     }
-    else if(result === "Computer Won!"){
+    else if (result === "Computer won!") {
         computerScore++;
         pScore.innerText = playerScore;
         cScore.innerText = computerScore;
     }
-    else{
+    else {
         return false;
+    }
+    console.log(playerScore);
+}
+
+function gameFinished() {
+    if (playerScore === 5 || computerScore === 5) {
+        return true
+    }
+    return false;
+}
+
+function whoWon() {
+    if (gameFinished()) {
+        if (playerScore === 5) {
+            message.innerText = `Player in the winnner! Congratulations!`
+        }
+        else {
+            message.innerText = `Computer is the Winner! You Lose!`
+        }
+        reset()
     }
 }
 
-function whoWon(){
+function reset() {
+    setTimeout(function () {
 
+        playerScore = 0;
+        computerScore = 0;
+        compSelect.innerHTML = ``
+        playerSelect.innerHTML = ``
+        pScore.innerText = 0;
+        cScore.innerText = 0;
+        gameActive = false;
+        message.innerText - `Choose rock, paper, scissors to play again`
+    }, 3000)
 }
 
 function computerPlay() {
@@ -122,11 +149,15 @@ function playRound(ps, cs) {
 function getMeWinner(playerSelection) {
     let computerSelection = computerPlay();
     let winner = playRound(playerSelection, computerSelection);
-    winner = winner === 0 ? "Draw!" : (winner = 1 ? "Player Won!" : "Computer Won!");
-
+    winner = winner === 0 ? "Draw!" : (winner === 1 ? "Player won!" : "Computer won!");
     return ({
         winner: winner,
         compMove: computerSelection
     })
 }
 
+submit.addEventListener("click", displayBoards);
+
+rock.addEventListener("click", () => gameFlow(rock.id));
+paper.addEventListener("click", () => gameFlow(paper.id));
+scissors.addEventListener("click", () => gameFlow(scissors.id));
