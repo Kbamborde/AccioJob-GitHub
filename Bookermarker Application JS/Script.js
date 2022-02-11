@@ -1,4 +1,4 @@
-// Book Class:-->
+
 class Book {
     constructor(title, author, isbn) {
         this.title = title;
@@ -8,7 +8,7 @@ class Book {
 }
 
 
-// UI Class:-->
+
 class UI {
     static displayBooks() {
         const books = Store.getBooks();
